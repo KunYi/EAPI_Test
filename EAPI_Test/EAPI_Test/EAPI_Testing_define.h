@@ -1,7 +1,7 @@
 /** *
  ** 
  **/
-#define UNIT_TESTING_CHAR_LENGTH 1024
+#define UNIT_TESTING_CHAR_LENGTH 128
 
 /** *
  **	EApi's Statuses
