@@ -98,8 +98,8 @@ TEST_F(UnitTesting_EApiBoardGetValue,EApiBoardGetValue_ID_HWMON_CHIPSET_TEMP)
 	EXPECT_PRED_FORMAT1(AssertEApiBoardGetValue,EAPI_ID_HWMON_CHIPSET_TEMP);
 }
 
-TEST_P(UnitTesting_EApiBoardGetValue, EApiBoardGetValue_ID_All)
+/*TEST_P(UnitTesting_EApiBoardGetValue, EApiBoardGetValue_ID_All)
 {
 	uint32_t n =  GetParam();
     EXPECT_PRED_FORMAT1( AssertEApiBoardGetValue , n );
-}
+}*/

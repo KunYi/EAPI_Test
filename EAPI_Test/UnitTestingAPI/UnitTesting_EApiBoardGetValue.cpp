@@ -23,5 +23,5 @@ AssertionResult UnitTesting_EApiBoardGetValue::AssertEApiBoardGetValue(const cha
 	default:
 		break;
 	}
-	return (result) ? AssertionSuccess() : AssertionFailure(msg);;
+	return (result) ? AssertionSuccess() : AssertionFailure(msg);
 }
