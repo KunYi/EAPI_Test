@@ -40,6 +40,14 @@ std::string EAPI_Unit_testing::_getEApiStatus(uint32_t status)
 		return UNIT_TESTING_EAPI_STATUS_MORE_DATA;
 	case EAPI_STATUS_UNSUPPORTED:
 		return UNIT_TESTING_EAPI_STATUS_UNSUPPORTED;
+	case EAPI_STATUS_INVALID_BLOCK_ALIGNMENT:
+		return UNIT_TESTING_EAPI_STATUS_INVALID_BLOCK_ALIGNMENT;
+	case EAPI_STATUS_INVALID_BLOCK_LENGTH:
+		return UNIT_TESTING_EAPI_STATUS_INVALID_BLOCK_LENGTH;
+	case EAPI_STATUS_WRITE_ERROR:
+		return UNIT_TESTING_EAPI_STATUS_WRITE_ERROR;
+	case EAPI_STATUS_READ_ERROR:
+		return UNIT_TESTING_EAPI_STATUS_READ_ERROR;
 	}
 	return "NULL";
 }
@@ -59,31 +67,4 @@ std::string EAPI_Unit_testing::_getEApiId(uint32_t Id)
 		return UNIT_TESTING_EAPI_ID_BOARD_PLATFORM_TYPE_STR;
 	}
 	return "NULL";
-}
-AssertionResult EAPI_Unit_testing::AssertEApiLibInitialize(const char* status_exp,uint32_t status)
-{
-	uint32_t result = EApiLibInitialize();
-	Message msg;
-	switch(result)
-	{
-	case EAPI_STATUS_NOT_INITIALIZED:
-		msg << "EApiLib Initialize is Fail , EAPI_STATUS : " << this->_getEApiStatus(result) << " ( " << result <<" ) ";
-		return (result == status)?AssertionSuccess():AssertionFailure(msg);
-	case EAPI_STATUS_INITIALIZED:
-		msg << "EApiLib Initialize is Fail , EAPI_STATUS : " << this->_getEApiStatus(result) << " ( " << result <<" ) ";
-		return (result == status)?AssertionSuccess():AssertionFailure(msg);
-	case EAPI_STATUS_SUCCESS:
-		msg << "EApiLib Initialize is Fail , EAPI_STATUS : " << this->_getEApiStatus(result) << " ( " << result <<" ) ";
-		return (result == status)?AssertionSuccess():AssertionFailure(msg);
-	case EAPI_STATUS_ERROR:
-		msg << "EApiLib Initialize is Fail , EAPI_STATUS : " << this->_getEApiStatus(result) << " ( " << result <<" ) ";
-		return (result == status)?AssertionSuccess():AssertionFailure(msg);
-	}
-	return AssertionFailure();
-}
-
-
-TEST_F( EAPI_Unit_testing , EApiLibIsInitialized )
-{
-	EXPECT_PRED_FORMAT1( AssertEApiLibInitialize , EAPI_STATUS_SUCCESS );
 }

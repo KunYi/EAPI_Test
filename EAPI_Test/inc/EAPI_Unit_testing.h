@@ -20,13 +20,11 @@
 #include "EAPI_Testing_define.h"
 
 class EAPI_Unit_testing :
-	public testing::TestWithParam<uint32_t>
+	public testing::Test
 {
 public:
 	virtual void SetUp(void);
 	virtual void TearDown(void);
-
-	testing::AssertionResult AssertEApiLibInitialize(const char* status_exp,uint32_t status);
 	
 	std::string getEApiStatus(uint32_t status);
 	std::string getEApiId(uint32_t Id);
