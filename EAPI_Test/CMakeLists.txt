@@ -24,8 +24,12 @@ add_executable(testmain
 	UnitTestingAPI/EAPI_Unit_testing.cpp
 	UnitTestingAPI/UnitTesting_EApiBoardGetStringA.cpp
 	UnitTestingAPI/UnitTesting_EApiBoardGetValue.cpp
+	UnitTestingAPI/UnitTesting_EApiStorageAreaRead.cpp
+	UnitTestingAPI/UnitTesting_EApiStorageAreaWrite.cpp
 	UnitTestingTestCase/UnitTesting_TestCase_EApiBoardGetStringA.cpp
 	UnitTestingTestCase/UnitTesting_TestCase_EApiBoardGetValue.cpp
+	UnitTestingTestCase/UnitTesting_TestCase_EApiStorageAreaRead.cpp
+	UnitTestingTestCase/UnitTesting_TestCase_EApiStorageAreaWrite.cpp
 	)
 # Specify MainTest's link libraries
 # Create dependency of MainTest on googletest
