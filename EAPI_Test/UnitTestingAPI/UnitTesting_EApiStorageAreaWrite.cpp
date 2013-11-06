@@ -7,9 +7,10 @@ using namespace testing;
 
 AssertionResult UnitTesting_EApiStorageAreaWrite::AssertEApiStorageAreaWrite(const char* Id_exp , const char * offset_exp,uint32_t Id , uint32_t offset)
 {
-	uint32_t pBufLen = _assert_write.length();
-	char * lpBuf = (char *)_assert_write.c_str();
-	uint32_t result = EApiStorageAreaWrite( Id , pBufLen , lpBuf , offset);
+	uint32_t pBufLen = 32;//_assert_write.length();
+	char lpBuf[33];// = (char *)malloc(32);
+	memcpy(lpBuf,_assert_write.c_str(),32);
+	uint32_t result = EApiStorageAreaWrite( Id , offset , lpBuf , pBufLen);
 	Message msg;
 	switch(result)
 	{
@@ -27,7 +28,7 @@ AssertionResult UnitTesting_EApiStorageAreaWrite::AssertEApiStorageAreaWrite(con
 			result = 0;
 		break;
 	}
-
+	//free(lpBuf);
 	return (result) ? AssertionSuccess() : AssertionFailure(msg);
 }
 

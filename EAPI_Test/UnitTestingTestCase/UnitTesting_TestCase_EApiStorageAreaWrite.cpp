@@ -6,23 +6,25 @@ using namespace testing;
 void Assert_EApiStorageAreaRead(uint32_t offset,const char* test_string){
 	std::string ltest_string = test_string;
 
-	char * lBuf = (char * )malloc(ltest_string.length());
-	uint32_t result = EApiStorageAreaRead(EAPI_ID_STORAGE_STD,offset,lBuf,ltest_string.length(),ltest_string.length());
-
+	char lBuf[33];// = (char * )malloc(ltest_string.length());
+	EApiLibInitialize();
+	uint32_t result = EApiStorageAreaRead(EAPI_ID_STORAGE_STD,offset,lBuf,32,32);
+	
 	if(result == EAPI_STATUS_SUCCESS){
 		std::string ltar = lBuf;
-		ASSERT_EQ(ltest_string,ltar);
+ 		ASSERT_EQ(ltest_string,ltar);
 	}else{
 		
 		FAIL() << "[ function ] [ EApiStorageAreaRead ] Fail";
 	}
-	free(lBuf);
+	//free(lBuf);
 }
 
 TEST_F(UnitTesting_EApiStorageAreaWrite , EApiStorageAreaWrite_Try_Write)
 {
 	std::string * pstr = new std::string(UNIT_TESTING_WRITE_TEST_1);
 	setBuffer(*pstr);
+	
 	EXPECT_PRED_FORMAT2(AssertEApiStorageAreaWrite,EAPI_ID_STORAGE_STD,0);
 	Assert_EApiStorageAreaRead(0,UNIT_TESTING_WRITE_TEST_1);
 	delete pstr;
